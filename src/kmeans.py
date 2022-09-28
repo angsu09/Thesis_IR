@@ -32,17 +32,19 @@ def tf_idf_Categories():
         return vectors
 
 def K_means():
-    # Sum_of_squared_distances = []
-    # K = range(2, 10)
-    # for k in K:
-    #     km = KMeans(n_clusters=k, max_iter=200, n_init=10)
-    #     km = km.fit(categories_tfidf)
-    #     Sum_of_squared_distances.append(km.inertia_)
-    # plt.plot(K, Sum_of_squared_distances, 'bx-')
-    # plt.xlabel('k')
-    # plt.ylabel('Sum_of_squared_distances')
-    # plt.title('Elbow Method For Optimal k')
-    # plt.show()
+    Sum_of_squared_distances = []
+    K = range(2, 10)
+    for k in K:
+        km = KMeans(n_clusters=k, max_iter=200, n_init=10)
+        km = km.fit(categories_tfidf)
+        Sum_of_squared_distances.append(km.inertia_)
+    plt.plot(K, Sum_of_squared_distances, 'bx-')
+    plt.xlabel('k')
+    plt.ylabel('Sum_of_squared_distances')
+    plt.title('Elbow Method For Optimal k')
+    plt.show()
+
+def find_cluster_posts():
     true_k = 7
     model = KMeans(n_clusters=true_k, init='k-means++', max_iter=500, n_init=10)
     model.fit(categories_tfidf)
